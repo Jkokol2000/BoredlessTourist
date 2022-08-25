@@ -28,7 +28,21 @@ def find_attractions(destination, intrests):
                 attractions_with_interest.append(possible_attraction[0])
 
     return attractions_with_interest
-
+def get_attractions_for_traveler(traveler):
+    traveler_destination = traveler[1]
+    traveler_interests = traveler[2]
+    traveler_attractions = find_attractions(traveler_destination, traveler_interests)
+    print(traveler_attractions)
+    interests_string = "Hi " + traveler[0] + ", we think you'll like these places around " + traveler_destination + ": "
+    for x in traveler_attractions:
+        if x == traveler_attractions[-1]:
+            print(x)
+            interests_string += (x + ".")
+        else:
+            print(x)
+            interests_string += (x+", ")
+            
+    return interests_string
 
 desind = get_destination_index("Paris, France")
 print(desind)
@@ -38,7 +52,9 @@ print(str(test_destination_index))
 
 add_attraction("Los Angeles, USA" ,['Venice Beach', ["beach"]])
 add_attraction("Paris, France", ["the Louvre", ["art", "museum"]])
-add_attraction("Paris, France", ["Arc de Triomphe", ["historical site", "monument"]])
+add_attraction("Paris, France", ["The Arc de Triomphe", ["historical site", "monument"]])
+add_attraction("Paris, France", ["The Arc de Triomphe", ["historical site", "monument"]])
+add_attraction("Paris, France", ["The Eiffel Tower", ["historical site", "monument"]])
 add_attraction("Shanghai, China", ["Yu Garden", ["garden", "historical site"]])
 add_attraction("Shanghai, China", ["Yuz Museum", ["art", "museum"]])
 add_attraction("Shanghai, China", ["Oriental Pearl Tower", ["skyscraper", "viewing deck"]])
@@ -50,3 +66,5 @@ add_attraction("Cairo, Egypt", ["Egyptian Museum", ["museum"]])
 print(attractions)
 la_arts = find_attractions("Los Angeles, USA", ['art'])
 print(la_arts)
+smills_france = get_attractions_for_traveler(['Dereck Smill', 'Paris, France', ['monument']])
+print(smills_france)
